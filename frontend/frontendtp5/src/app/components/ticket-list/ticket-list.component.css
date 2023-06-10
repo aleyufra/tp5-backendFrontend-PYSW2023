@@ -12,17 +12,17 @@
 
 .menu-container {
    border-radius: 8px;
-   border: 1px solid #bcbcbc;
+   border: 1px solid #222;
    background-color: #fdfdfd;
    min-height: 80vh;
    height: fit-content;
    padding: 30px !important;
-   margin: 30px 0px;
+   margin: 50px 0px;
 }
 
-.transacciones-container {
+.ticketsComprados-container {
    border-radius: 8px;
-   border: 1px solid #bcbcbc;
+   border: 1px solid #222;
    min-height: 70vh;
    height: fit-content;
    width: 100%;
@@ -33,17 +33,16 @@
    align-items: start;
 }
 
-.tabla-transacciones {
+.tabla-tickets {
    border-radius: 8px;
-   border-top: 1px solid #cdcdcd;
    margin-top: 30px;
 }
 
-.tabla-transacciones thead tr th {
+.tabla-tickets thead tr th {
    white-space: nowrap;
 }
 
-.tabla-transacciones tbody tr td {
+.tabla-tickets tbody tr td {
    white-space: nowrap;
 }
 
@@ -56,14 +55,14 @@
    font-size: 32px;
    text-align: center;
    font-weight: bold;
-   border-bottom: 1px solid #cdcdcd;
+   border-bottom: 1px solid #555;
    padding-bottom: 20px;
    white-space: nowrap;
 }
 
 .opciones-container {
    border-radius: 8px;
-   border: 1px solid #bcbcbc;
+   border: 1px solid #222;
    background-color: #fff;
    height: fit-content;
    padding: 30px 30px 15px 30px;

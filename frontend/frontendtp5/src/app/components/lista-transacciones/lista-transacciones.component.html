@@ -1,18 +1,18 @@
 <div class="container-fluid">
    <div class="container m-auto">
 
-      <div class="row menu-container bg-light bg-gradient shadow-lg">
+      <div class="row menu-container bg-gradient shadow-lg">
 
 
          <div class="col-12">
             <div class="opciones-container">
                <div class="opciones d-flex justify-content-between align-items-center">
-                  <button for="cargaTransacciones" class="btn btn-dark btn-opciones"
+                  <button for="cargaTransacciones" class="btn btn-secondary btn-opciones"
                      (click)="obtenerTransacciones()">
                      Recuperar Todos
                   </button>
                   <form class="d-flex flex-row justify-content-evenly align-items-center">
-                     <button for="cargaTransacciones" class="btn btn-dark btn-opciones me-3"
+                     <button for="cargaTransacciones" class="btn btn-secondary btn-opciones me-3"
                         (click)="obtenerTransaccionesPorFiltro(monedaOrigen, monedaDestino)">
                         Recuperar Por Filtro:
                      </button>
@@ -40,6 +40,9 @@
 
          <div class="col-12">
             <div class="row transacciones-container">
+               <div class="transacciones-header">
+                  <p class="text-center h4">Lista de Converiones</p>
+               </div>
                <div *ngIf="listaVacia || transacciones.length == 0" class="col-12 lista-vacia">
                   <p>{{mensaje}}</p>
                </div>
@@ -58,7 +61,7 @@
                      <tbody>
                         <tr *ngFor="let tran of transacciones">
                            <td>{{tran.emailCliente}}</td>
-                           <th>{{tran.monedaOrigen}}</th>
+                           <th class="fw-normal">{{tran.monedaOrigen}}</th>
                            <td>{{tran.monedaDestino}}</td>
                            <td>${{tran.cantidadOrigen}}</td>
                            <td>${{tran.cantidadDestino}}</td>

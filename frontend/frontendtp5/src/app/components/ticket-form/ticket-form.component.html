@@ -3,8 +3,11 @@
 
       <div class="row m-auto">
          <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-5 m-auto">
-            <div class="ticket-form-container">
+            <div class="ticket-form-container shadow-lg">
                <form #ticketForm="ngForm" action="" class="ticket-form">
+                  <div class="mb-4">
+                     <p class="h4 text-center">Compra de Tickets - Teatro Mitre</p>
+                  </div>
                   <div class="mb-3">
                      <label for="apellido" class="form-label">Apellido: </label>
                      <input [(ngModel)]="espectador.apellido" type="text" class="form-control" id="apellido"
@@ -25,7 +28,7 @@
                         required>
                   </div>
                   <div class="mb-3">
-                     <label for="fechaCompra" class="form-label">Correo Electronico: </label>
+                     <label for="fechaCompra" class="form-label">Fecha: </label>
                      <input [(ngModel)]="ticket.fechaCompra" type="date" class="form-control" id="fechaCompra"
                         name="fechaCompra" required>
                   </div>

@@ -64,6 +64,14 @@ export class TicketsService {
     return this._http.get('http://localhost:3000/api/ticket', httpOptions)
   }
 
+  getTicketsPorCategoria(categoria: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ }),
+      params: new HttpParams()
+        .append('categoriaEspectador', categoria)
+    }
+    return this._http.get('http://localhost:3000/api/ticket', httpOptions)
+  }
 
   getTicket(id: string): Observable<any> {
     const httpOptions = {

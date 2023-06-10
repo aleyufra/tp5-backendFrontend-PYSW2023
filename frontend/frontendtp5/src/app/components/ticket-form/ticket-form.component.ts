@@ -11,9 +11,9 @@ import { TicketsService } from 'src/app/services/tickets.service';
 })
 export class TicketFormComponent implements OnInit {
 
-  precioOriginal: number = 100;
+  precioOriginal: number = 600;
   espectador: Espectador;
-  ticket: Ticket
+  ticket: Ticket;
 
   edicion: boolean = false;
 

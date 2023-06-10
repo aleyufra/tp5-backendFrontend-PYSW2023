@@ -12,6 +12,7 @@ import { TicketsService } from 'src/app/services/tickets.service';
 export class TicketListComponent implements OnInit {
 
   tickets: Array<any>
+  categoriaEspectador: string = 'Local';
 
   constructor(private ticketService: TicketsService, private router: Router) {
     this.tickets = new Array<Ticket>
@@ -27,6 +28,11 @@ export class TicketListComponent implements OnInit {
         console.log(err)
       }
     )
+  }
+
+
+  irATicketForm() {
+    this.router.navigate(['ticket-form', 0])
   }
 
   editarTicket(id: string) {
@@ -57,5 +63,29 @@ export class TicketListComponent implements OnInit {
     catch (error) {
       console.log(error)
     }
+  }
+
+  obtenerTickets() {
+    this.ticketService.getTickets().subscribe(
+      res => {
+        // console.log(res)
+        this.tickets = res;
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
+
+  filtarTickets(categoria: string) {
+    this.ticketService.getTicketsPorCategoria(categoria).subscribe(
+      res => {
+        // console.log(res)
+        this.tickets = res;
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
 }

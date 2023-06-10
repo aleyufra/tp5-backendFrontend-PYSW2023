@@ -11,8 +11,8 @@ import { ConversorService } from 'src/app/services/conversor.service';
 export class ConversorComponent {
 
   valor!:number;
-  valorDeTipo!:string;
-  valorATipo!:string;
+  valorDeTipo:string = 'USD';
+  valorATipo:string = 'ARS';
   valorATipoMostrar!:string;
   resultado!:string
 

@@ -3,67 +3,68 @@
       <div class="row m-auto d-flex justify-content-center">
          <div class="col-12 col-sm-12 col-md-8 col-lg-4">
 
-            <form #formConversor="ngForm" class="bg-gradient">
-               <legend class="fw-bolder fs-4">Conversor de Divisas</legend>
-               <div class="mb-3">
-                  <label for="email" class="form-label">Correo Electronico: </label>
-                  <input type="text" id="email" min="0" max="10000000" class="form-control" name="email"
-                     [(ngModel)]="transaccion.emailCliente" required>
-               </div>
-               <div class="mb-3">
-                  <label for="cantidad" class="form-label">Cantidad: </label>
-                  <input type="number" id="cantidad" min="0" max="10000000" class="form-control" name="cantidad"
-                     [(ngModel)]="valor" required>
-               </div>
-               <div class="mb-3">
-                  <label for="valorDeTipo" class="form-label">De tipo: </label>
-                  <select id="valorDeTipo" class="form-select" name="valorDeTipo" [(ngModel)]="valorDeTipo" required>
-                     <option value="USD" selected>USD Dolares - EEUU</option>
-                     <option value="ARS">ARS Peso - Argentina</option>
-                     <option value="EUR">EUR Euro - Union Europea</option>
-                     <option value="GBP">GBP Libra Esterlina - Inglaterra</option>
-                     <option value="RUB">RUB Rublo - Rusia</option>
-                     <option value="BRL">BRL - Real Brasileño</option>
-                  </select>
-               </div>
-               <div class="mb-3">
-                  <label for="valorATipo" class="form-label">A tipo: </label>
-                  <select id="valorATipo" class="form-select" name="valorATipo" [(ngModel)]="valorATipo" required>
-                     <option value="ARS" selected>ARS Peso - Argentina</option>
-                     <option value="USD">USD Dolares - EEUU</option>
-                     <option value="EUR">EUR Euro - Union Europea</option>
-                     <option value="GBP">GBP Libra Esterlina - Inglaterra</option>
-                     <option value="RUB">RUB Rublo - Ruso</option>
-                     <option value="BRL">BRL - Real Brasileño</option>
-                  </select>
-               </div>
-               <div class="mb-3">
-                  <label for="tasa" class="form-label">Tasa de conversión: </label>
-                  <input type="number" name="tasa" id="tasa" min="0" max="100" class="form-control" accept=""
-                     [(ngModel)]="transaccion.tasaConversion" required>
-               </div>
-               <div class="mb-3">
-                  <label for="cantidad" class="form-label">Resultado: </label>
-                  <input type="text" id="cantidad" class="form-control" accept="" disabled
-                     placeholder="{{valorATipoMostrar}} {{resultado | number:'1.2-2'}}">
-               </div>
-               <div class="d-flex justify-content-between">
-                  <button [disabled]="formConversor.invalid" type="submit" class="btn btn-light boton"
-                     (click)="convertir(valor,valorDeTipo,valorATipo)">
-                     Convertir
-                  </button>
-                  <button type="submit" class="btn btn-light boton"
-                     (click)="goToList()">Registros
-                  </button>
-               </div>
-            </form>
+            <div class="conversor-container">
+               <form #formConversor="ngForm" class="bg-gradient">
+                  <legend class="fw-bolder fs-4">Conversor de Divisas</legend>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Correo Electronico: </label>
+                     <input type="text" id="email" min="0" max="10000000" class="form-control" name="email"
+                        [(ngModel)]="transaccion.emailCliente" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="cantidad" class="form-label">Cantidad: </label>
+                     <input type="number" id="cantidad" min="0" max="10000000" class="form-control" name="cantidad"
+                        [(ngModel)]="valor" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="valorDeTipo" class="form-label">De tipo: </label>
+                     <select id="valorDeTipo" class="form-select" name="valorDeTipo" [(ngModel)]="valorDeTipo" required>
+                        <option value="USD" selected>USD Dolares - EEUU</option>
+                        <option value="ARS">ARS Peso - Argentina</option>
+                        <option value="EUR">EUR Euro - Union Europea</option>
+                        <option value="GBP">GBP Libra Esterlina - Inglaterra</option>
+                        <option value="RUB">RUB Rublo - Rusia</option>
+                        <option value="BRL">BRL - Real Brasileño</option>
+                     </select>
+                  </div>
+                  <div class="mb-3">
+                     <label for="valorATipo" class="form-label">A tipo: </label>
+                     <select id="valorATipo" class="form-select" name="valorATipo" [(ngModel)]="valorATipo" required>
+                        <option value="ARS" selected>ARS Peso - Argentina</option>
+                        <option value="USD">USD Dolares - EEUU</option>
+                        <option value="EUR">EUR Euro - Union Europea</option>
+                        <option value="GBP">GBP Libra Esterlina - Inglaterra</option>
+                        <option value="RUB">RUB Rublo - Ruso</option>
+                        <option value="BRL">BRL - Real Brasileño</option>
+                     </select>
+                  </div>
+                  <div class="mb-3">
+                     <label for="tasa" class="form-label">Tasa de conversión: </label>
+                     <input type="number" name="tasa" id="tasa" min="0" max="100" class="form-control" accept=""
+                        [(ngModel)]="transaccion.tasaConversion" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="cantidad" class="form-label">Resultado: </label>
+                     <input type="text" id="cantidad" class="form-control" accept="" disabled
+                        placeholder="{{valorATipoMostrar}} {{resultado | number:'1.2-2'}}">
+                  </div>
+                  <div class="d-flex justify-content-between">
+                     <button [disabled]="formConversor.invalid" type="submit" class="btn btn-light boton"
+                        (click)="convertir(valor,valorDeTipo,valorATipo)">
+                        Convertir
+                     </button>
+                     <button type="submit" class="btn btn-light boton" (click)="goToList()">Registros
+                     </button>
+                  </div>
+               </form>
+            </div>
 
-            <p>valor: {{valor | json}}</p>
+            <!-- <p>valor: {{valor | json}}</p>
             <p>valorDeTipo: {{valorDeTipo | json}}</p>
             <p>valorATipo: {{valorATipo | json}}</p>
             <p>valorATipoMostrar: {{valorATipoMostrar | json}}</p>
             <p>resultado: {{resultado | json}}</p>
-            <p>ts: {{transaccion.tasaConversion | json}}</p>
+            <p>ts: {{transaccion.tasaConversion | json}}</p> -->
          </div>
       </div>
    </div>
