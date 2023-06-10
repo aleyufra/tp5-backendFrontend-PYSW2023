@@ -58,7 +58,7 @@ export class TicketFormComponent implements OnInit {
           error => { reject(error) }
         );
       });
-      console.log(crearEspectador);
+      console.log(crearEspectador.msg);
       // -------------------------------------
       this.espectador = crearEspectador.espectador;
       this.ticket.espectador = this.espectador;
@@ -102,7 +102,7 @@ export class TicketFormComponent implements OnInit {
         )
       });
 
-      console.log(ticketEditadoObj)
+      // console.log(ticketEditadoObj)
     }
     catch (error) {
       console.log(error)

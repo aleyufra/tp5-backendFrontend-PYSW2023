@@ -40,8 +40,7 @@ const routes: Routes = [
     ConversorComponent,
     ListaTransaccionesComponent,
     TicketFormComponent,
-    TicketListComponent,
-
+    TicketListComponent
   ],
   imports: [
     BrowserModule,

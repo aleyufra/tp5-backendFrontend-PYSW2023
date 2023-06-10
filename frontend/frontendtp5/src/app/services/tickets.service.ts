@@ -72,6 +72,15 @@ export class TicketsService {
   }
 
 
+  deleteEspectador(espectador: Espectador) {
+    const httpOptions = {
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+    }
+    return this._http.delete('http://localhost:3000/api/ticket/'+espectador._id, httpOptions)
+  }
+
+
   putTicket(ticket: Ticket): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
@@ -81,4 +90,14 @@ export class TicketsService {
 
     return this._http.put('http://localhost:3000/api/ticket/'+ticket._id, body, httpOptions)
   }
+
+
+  deleteTicket(ticket: Ticket) {
+    const httpOptions = {
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+    }
+    return this._http.delete('http://localhost:3000/api/ticket/'+ticket._id, httpOptions)
+  }
+
 }
