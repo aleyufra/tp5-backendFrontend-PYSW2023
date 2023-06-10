@@ -41,6 +41,15 @@ export class TicketsService {
   }
 
 
+  getTicket(id: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ }),
+      params: new HttpParams()
+    }
+    return this._http.get('http://localhost:3000/api/ticket/'+id, httpOptions)
+  }
+
+
   postTicket(ticket: Ticket): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
@@ -52,4 +61,24 @@ export class TicketsService {
   }
 
 
+  putEspectador(espectador: Espectador): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ "Content-type": "application/json" }),
+      params: new HttpParams()
+    }
+    const body = JSON.stringify(espectador);
+
+    return this._http.put('http://localhost:3000/api/espectador/'+espectador._id, body, httpOptions)
+  }
+
+
+  putTicket(ticket: Ticket): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ "Content-type": "application/json" }),
+      params: new HttpParams()
+    }
+    const body = JSON.stringify(ticket);
+
+    return this._http.put('http://localhost:3000/api/ticket/'+ticket._id, body, httpOptions)
+  }
 }

@@ -16,35 +16,37 @@ ticketCtrl.createTicket = async (req, res) => {
       await ticket.save();
       res.json({
          'status': '1',
-         'msg': 'Ticket guardado.'
+         'msg': 'Ticket guardado.',
+         'ticket': ticket
       })
    } catch (error) {
       console.log(error);
       res.status(400).json({
          'status': '0',
-         'msg': 'Error procesando operacion.'
+         'msg': 'Error al guardar el ticket.'
       })
    }
 }
 
 ticketCtrl.getTicket = async (req, res) => {
-   const ticket = await Ticket.findById(req.params.id);
+   const ticket = await Ticket.findById(req.params.id).populate('espectador');
    res.json(ticket);
 }
 
 ticketCtrl.editTicket = async (req, res) => {
    const vticket = new Ticket(req.body);
    try {
-      await Ticket.updateOne({ _id: req.body._id }, vticket);
+      await Ticket.findOneAndUpdate({ _id: req.body._id }, vticket).populate('espectador');
       res.json({
          'status': '1',
-         'msg': 'Ticket updated'
+         'msg': 'Ticket actualizado',
+         'ticket': vticket
       })
    } catch (error) {
       console.log(error);
       res.status(400).json({
          'status': '0',
-         'msg': 'Error procesando la operacion'
+         'msg': 'Error al actualizar el ticket'
       })
    }
 }
@@ -54,13 +56,17 @@ ticketCtrl.deleteTicket = async (req, res) => {
       await Ticket.deleteOne({ _id: req.params.id });
       res.json({
          status: '1',
-         msg: 'Ticket removed'
+         msg: 'Ticket eliminado'
       })
    } catch (error) {
       res.status(400).json({
          'status': '0',
-         'msg': 'Error procesando la operacion'
+         'msg': 'Error al eliminar el ticket'
       })
    }
 }
 module.exports = ticketCtrl;
+
+
+// await Ticket.updateOne({ _id: req.body._id }, vticket);
+//  await Ticket.findOneAndUpdate({ _id: req.body._id }, vticket).populate('espectador');

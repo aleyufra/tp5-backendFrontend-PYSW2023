@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketsService } from 'src/app/services/tickets.service';
 
@@ -11,7 +12,7 @@ export class TicketListComponent implements OnInit{
 
   tickets: Array<any>
 
-  constructor(private ticketService: TicketsService) {
+  constructor(private ticketService: TicketsService, private router: Router) {
     this.tickets = new Array<Ticket>
   }
 
@@ -25,6 +26,10 @@ export class TicketListComponent implements OnInit{
           console.log(err)
         }
       )
+  }
+
+  editarTicket(id: string) {
+    this.router.navigate(['ticket-form', id])
   }
 
 }
