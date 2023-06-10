@@ -1,0 +1,55 @@
+<div class="container-fluid">
+   <div class="container m-auto">
+
+      <div class="row m-auto">
+         <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-5 m-auto">
+            <div class="ticket-form-container">
+               <form action="" class="ticket-form">
+                  <div class="mb-3">
+                     <label for="apellido" class="form-label">Apellido: </label>
+                     <input [(ngModel)]="espectador.apellido" type="text" class="form-control" id="apellido" name="apellido" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="nombre" class="form-label">Nombre: </label>
+                     <input [(ngModel)]="espectador.nombre" type="text" class="form-control" id="nombre" name="nombre" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="dni" class="form-label">DNI: </label>
+                     <input [(ngModel)]="espectador.dni" type="text" class="form-control" id="dni" name="dni" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Correo Electronico: </label>
+                     <input [(ngModel)]="espectador.email" type="text" class="form-control" id="email" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="fechaCompra" class="form-label">Correo Electronico: </label>
+                     <input [(ngModel)]="ticket.fechaCompra" type="date" class="form-control" id="fechaCompra" name="fechaCompra" required>
+                  </div>
+                  <div class="row mb-3 d-flex flex-row justify-content-between">
+                     <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+                        <label for="categoria" class="form-label">Categoria: </label>
+                        <select [(ngModel)]="ticket.categoriaEspectador" (ngModelChange)="calcularPrecio(ticket.categoriaEspectador)"
+                           class="form-select me-3" id="categoria" name="categoria" required>
+                           <option value="">seleccione una categoria</option>
+                           <option value="Local">Local</option>
+                           <option value="Extranjero">Extranjero</option>
+                        </select>
+                     </div>
+                     <div class="col-12 col-lg-6">
+                        <label for="precioFinal" class="form-label">Precio: </label>
+                        <input type="text" placeholder="{{ ticket.precioTicket | currency:'USD':'symbol' }}"
+                         class="form-control" id="precioFinal" name="precioFinal" disabled required>
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <button (click)="compraTicket(espectador)" class="btn btn-success">Comprar</button>
+                     <button (click)="irAListaDeTickets()" class="btn btn-success">Comprar</button>
+                  </div>
+                  <!-- <p>{{fechaCompra | json}}</p> -->
+               </form>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>

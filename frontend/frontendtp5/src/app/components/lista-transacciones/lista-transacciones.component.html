@@ -1,0 +1,75 @@
+<div class="container-fluid">
+   <div class="container m-auto">
+
+      <div class="row menu-container bg-light bg-gradient shadow-lg">
+
+
+         <div class="col-12">
+            <div class="opciones-container">
+               <div class="opciones d-flex justify-content-between align-items-center">
+                  <button for="cargaTransacciones" class="btn btn-dark btn-opciones"
+                     (click)="obtenerTransacciones()">
+                     Recuperar Todos
+                  </button>
+                  <form class="d-flex flex-row justify-content-evenly align-items-center">
+                     <button for="cargaTransacciones" class="btn btn-dark btn-opciones me-3"
+                        (click)="obtenerTransaccionesPorFiltro(monedaOrigen, monedaDestino)">
+                        Recuperar Por Filtro:
+                     </button>
+                     <select id="monedaOrigen" class="form-select me-3" name="monedaOrigen" [(ngModel)]="monedaOrigen" required>
+                        <option value="USD">USD Dolares - EEUU</option>
+                        <option value="ARS">ARS Peso - Argentina</option>
+                        <option value="EUR">EUR Euro - Union Europea</option>
+                        <option value="GBP">GBP Libra Esterlina - Inglaterra</option>
+                        <option value="RUB">RUB Rublo - Rusia</option>
+                        <option value="BRL">BRL - Real Brasileño</option>
+                     </select>
+                     <select id="monedaDestino" class="form-select" name="monedaDestino" [(ngModel)]="monedaDestino" required>
+                        <option value="ARS">ARS Peso - Argentina</option>
+                        <option value="USD">USD Dolares - EEUU</option>
+                        <option value="EUR">EUR Euro - Union Europea</option>
+                        <option value="GBP">GBP Libra Esterlina - Inglaterra</option>
+                        <option value="RUB">RUB Rublo - Ruso</option>
+                        <option value="BRL">BRL - Real Brasileño</option>
+                     </select>
+                  </form>
+               </div>
+            </div>
+         </div>
+
+
+         <div class="col-12">
+            <div class="row transacciones-container">
+               <div *ngIf="listaVacia || transacciones.length == 0" class="col-12 lista-vacia">
+                  <p>{{mensaje}}</p>
+               </div>
+               <div *ngIf="!listaVacia && transacciones.length != 0" class="table-responsive">
+                  <table class="table tabla-transacciones table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th scope="col">Email</th>
+                           <th scope="col">Moneda Origen</th>
+                           <th scope="col">Moneda Destino</th>
+                           <th scope="col">Cantidad Origen</th>
+                           <th scope="col">Cantidad Destino</th>
+                           <th scope="col">Tasa Conversion</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let tran of transacciones">
+                           <td>{{tran.emailCliente}}</td>
+                           <th>{{tran.monedaOrigen}}</th>
+                           <td>{{tran.monedaDestino}}</td>
+                           <td>${{tran.cantidadOrigen}}</td>
+                           <td>${{tran.cantidadDestino}}</td>
+                           <td>{{tran.tasaConversion}}</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</div>
