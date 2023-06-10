@@ -27,7 +27,7 @@ export class TicketFormComponent implements OnInit {
       if (params['id'] != 0) {
         this.ticketsService.getTicket(params['id']).subscribe(
           res => {
-            console.log(res)
+            // console.log(res)
             this.espectador = res.espectador;
             this.ticket = res;
             this.edicion = true;
@@ -69,7 +69,7 @@ export class TicketFormComponent implements OnInit {
           error => { reject(error) }
         );
       });
-      console.log(crearTicket.msg);
+      console.log(crearTicket.msg); 
       // --------------------------------------
       this.espectador = new Espectador();
       this.ticket = new Ticket();
