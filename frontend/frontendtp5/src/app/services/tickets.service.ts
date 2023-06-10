@@ -11,6 +11,7 @@ export class TicketsService {
 
   constructor(private _http: HttpClient) { }
 
+  // *********** ESPECTADORES ******************
 
   getEspectadores(): Observable<any> {
     const httpOptions = {
@@ -30,6 +31,29 @@ export class TicketsService {
 
     return this._http.post('http://localhost:3000/api/espectador', body, httpOptions)
   }
+
+
+  putEspectador(espectador: Espectador): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ "Content-type": "application/json" }),
+      params: new HttpParams()
+    }
+    const body = JSON.stringify(espectador);
+
+    return this._http.put('http://localhost:3000/api/espectador/'+espectador._id, body, httpOptions)
+  }
+
+
+  deleteEspectador(espectador: Espectador) {
+    const httpOptions = {
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+    }
+    return this._http.delete('http://localhost:3000/api/espectador/'+espectador._id, httpOptions)
+  }
+
+
+  // *********** TICKETS ******************
 
 
   getTickets(): Observable<any> {
@@ -58,26 +82,6 @@ export class TicketsService {
     let body = JSON.stringify(ticket)
 
     return this._http.post('http://localhost:3000/api/ticket', body, httpOptions)
-  }
-
-
-  putEspectador(espectador: Espectador): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ "Content-type": "application/json" }),
-      params: new HttpParams()
-    }
-    const body = JSON.stringify(espectador);
-
-    return this._http.put('http://localhost:3000/api/espectador/'+espectador._id, body, httpOptions)
-  }
-
-
-  deleteEspectador(espectador: Espectador) {
-    const httpOptions = {
-      headers: new HttpHeaders({}),
-      params: new HttpParams()
-    }
-    return this._http.delete('http://localhost:3000/api/ticket/'+espectador._id, httpOptions)
   }
 
 

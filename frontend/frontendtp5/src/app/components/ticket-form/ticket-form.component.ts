@@ -69,7 +69,7 @@ export class TicketFormComponent implements OnInit {
           error => { reject(error) }
         );
       });
-      console.log(crearTicket.msg); 
+      console.log(crearTicket.msg);
       // --------------------------------------
       this.espectador = new Espectador();
       this.ticket = new Ticket();
@@ -85,24 +85,25 @@ export class TicketFormComponent implements OnInit {
 
   async editarTicket(ticket: Ticket, espectador: Espectador) {
     try {
-      const espectadorEditado: Espectador = await new Promise((resolve, reject) => {
+      const espectadorEditado: any = await new Promise((resolve, reject) => {
         this.ticketsService.putEspectador(espectador).subscribe(
-          res => { resolve(res.espectador) },
+          res => { resolve(res) },
           err => { reject(err) }
         )
       });
-      console.log(espectadorEditado)
+      console.log(espectadorEditado.msg)
 
       ticket.espectador = espectadorEditado;
 
-      const ticketEditadoObj = await new Promise((resolve,reject)=> {
+      const ticketEditado: any = await new Promise((resolve, reject) => {
         this.ticketsService.putTicket(ticket).subscribe(
-          res => {resolve(res)},
-          err => {reject(err)}
+          res => { resolve(res) },
+          err => { reject(err) }
         )
       });
-
-      // console.log(ticketEditadoObj)
+      console.log(ticketEditado.msg);
+      this.espectador = new Espectador();
+      this.ticket = new Ticket();
     }
     catch (error) {
       console.log(error)
