@@ -1,17 +1,17 @@
 <div class="container-fluid">
    <div class="container m-auto">
 
-      <div class="row menu-container shadow-lg">
+      <div class="row menu-container ">
 
 
          <div class="col-12">
-            <div class="opciones-container">
+            <div class="opciones-container shadow-lg">
                <div class="opciones d-flex justify-content-between align-items-start">
                   <button (click)="irATicketForm()" for="cargaTransacciones" class="btn btn-dark btn-opciones">
                      Agregar
                   </button>
                   <form class="d-flex flex-row justify-content-evenly align-items-start">
-                     <input (click)="obtenerTickets()" type="submit" for="cargaTickets" class="btn btn-dark btn-opciones me-3" value="Todo">
+                     <input (click)="obtenerTickets()" type="submit" for="cargaTickets" class="btn btn-dark btn-opciones me-3" value="Mostrar Todo">
                      <input (click)="filtarTickets(categoriaEspectador)" type="submit" for="cargaTickets" class="btn btn-dark btn-opciones me-3" value="Filtrar">
                      <div class="d-flex flex-column align-items-start">
                         <select [(ngModel)]="categoriaEspectador" id="categoriaEspectador" class="form-select me-3" name="categoriaEspectador" required aria-describedby="emailHelp">
@@ -27,7 +27,7 @@
 
 
          <div class="col-12">
-            <div class="row ticketsComprados-container">
+            <div class="row ticketsComprados-container shadow-lg">
                <div class="table-responsive">
                   <div class="col-12 lista-vacia">
                      <p>Lista de Tickets vendidos</p>
