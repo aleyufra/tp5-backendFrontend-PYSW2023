@@ -11,6 +11,8 @@ export class ConversorService {
 
   constructor(private _http: HttpClient, private toast: ToastrService) { }
 
+
+  // API CONVERSOR
   conversor(value: string, from_type: string, to_type: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -23,33 +25,38 @@ export class ConversorService {
       .set('from-value', value)
       .set('from-type', from_type)
       .set('to-type', to_type);
+      
     return this._http.post('https://community-neutrino-currency-conversion.p.rapidapi.com/convert', body, httpOptions);
   }
 
 
+  // GET TRANSACCIONES
   getTransacciones(): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        // "Content-type": "application/json"
-      }),
+      headers: new HttpHeaders({ }),
       params: new HttpParams()
     }
+
     return this._http.get('http://localhost:3000/api/transaccion', httpOptions)
   }
 
+
+  // GET TRANSACCIONES POR FILTRO 
   getTransaccionesPorFiltro(morigen: string, mdestino: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-type": "application/json"
       }),
-      params: new HttpParams()
+      params: new HttpParams() // Parametros pasador como filtro
         .append('monedaOrigen', morigen)
           .append('monedaDestino', mdestino)
     }
+
     return this._http.get('http://localhost:3000/api/transaccion', httpOptions)
   }
 
 
+  // POST REGISTRAR TRANSACCION
   postTransacciones(transaccion: Transaccion): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -59,7 +66,7 @@ export class ConversorService {
     }
     const body = JSON.stringify(transaccion);
 
-    this.toast.warning("Se ha registrado la transaccion", "Atencion:", {
+    this.toast.warning("Se ha registrado la transaccion", "", {
       closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
       easeTime: 100
     })
@@ -68,9 +75,8 @@ export class ConversorService {
   }
   
 }
+
+//                   API KEYS
 // cb3248b3e4mshcc7893fea728b6fp1044cejsnda64170dc028
 // 00eb449269msh6422ec084d1e376p1f3d32jsn32f6c01e9805
 // f2aa6735efmsha8b3b23b3af9952p17cd22jsn48b26a7530eb
-
-// const body = JSON.stringify(producto)
-// "Content-type": "application/json"

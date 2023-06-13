@@ -30,7 +30,6 @@
    margin: 0;
    background-color: #fff;
    display: flex;
-   align-items: start;
 }
 
 .tabla-tickets {
@@ -70,13 +69,8 @@
    margin-bottom: 25px;
 }
 
-.opciones {
-   /* border: 1px solid red; */
-}
-
 .opciones1 {
    display: flex;
-   /* flex-wrap: wrap; */
 }
 
 .table-responsive {
@@ -86,8 +80,8 @@
 .btn-opciones {
    white-space: nowrap;
    width: auto;
-
 }
+
 .btno {
    width: 120px;
 }
@@ -103,12 +97,10 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: start;
    }
    .opciones0 {
       display: flex;
       flex-wrap: wrap;
-      justify-content: start;
    }
    .btno {
       width: auto;

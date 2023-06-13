@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { Routes, RouterModule } from '@angular/router';
@@ -18,8 +18,6 @@ import { ConversorComponent } from './components/conversor/conversor.component';
 import { ListaTransaccionesComponent } from './components/lista-transacciones/lista-transacciones.component';
 import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [

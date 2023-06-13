@@ -12,7 +12,7 @@ export class ProductoService {
   constructor(private _http: HttpClient, private toast: ToastrService) { }
 
 
-
+  // GET PRODUCTOS
   getProductos(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ }),
@@ -22,7 +22,8 @@ export class ProductoService {
     return this._http.get('http://localhost:3000/api/producto', httpOptions)
   }
 
-
+  
+  // GET PRODUCTO
   getProducto(id: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ }),
@@ -33,6 +34,7 @@ export class ProductoService {
   }
 
 
+  // PRODUCTOS DESTACADOS
   getProductosDestacados(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ }),
@@ -44,6 +46,7 @@ export class ProductoService {
   }
 
 
+  // POST PRODUCTO
   postProducto(producto: Producto): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -53,7 +56,7 @@ export class ProductoService {
     }
     const body = JSON.stringify(producto)
 
-    this.toast.success("Se ha agregado el producto con exito", "Atencion:", {
+    this.toast.success("Se ha agregado el producto con éxito", "", {
       closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
       easeTime: 100
     })
@@ -61,6 +64,8 @@ export class ProductoService {
     return this._http.post('http://localhost:3000/api/producto', body, httpOptions)
   }
 
+
+  // PUT PRODUCTO
   putProducto(producto: Producto):Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -71,7 +76,7 @@ export class ProductoService {
     const id = producto._id;
     const body = JSON.stringify(producto)
 
-    this.toast.info("Se ha modificado el producto", "Atencion:", {
+    this.toast.info("Se ha modificado el producto", "", {
       closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
       easeTime: 100
     })
@@ -79,6 +84,8 @@ export class ProductoService {
     return this._http.put('http://localhost:3000/api/producto/'+id, body, httpOptions)
   }
 
+
+  // DELETE PRODUCTO
   deleteProducto(id: string):Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
