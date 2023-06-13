@@ -26,7 +26,7 @@ export class ProductosFormComponent implements OnInit {
       } else {
         this.productoService.getProducto(params['id']).subscribe(
           res => {
-            console.log(res);
+            // console.log(res);
             this.producto = res;
             this.edicion = true;
             this.idProd = res._id
