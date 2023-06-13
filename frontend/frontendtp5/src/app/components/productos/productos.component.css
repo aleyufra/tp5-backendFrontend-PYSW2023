@@ -68,17 +68,18 @@
 
 .aside-container {
    height: 100%;
+   border-radius: 12px;
+   margin-bottom: 10px
 }
 
 .aside {
    height: 100px;
    width: 100%;
-   border-radius: 5px;
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: #fdfdfd;
-   border: 1px solid #cacaca;
+   /* background-color: #fdfdfd; */
+   /* border: 1px solid #cacaca; */
 }
 
 @media (max-width: 992px) {

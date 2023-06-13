@@ -30,9 +30,9 @@
       <div class="row align-items-start">
 
          <div class="col-12">
-            <div class="aside-container">
+            <div class="aside-container bg-dark">
                <div class="aside">
-                  <button (click)="goToProdForm()" class="btn btn-dark">Agregar Producto</button>
+                  <button (click)="goToProdForm()" class="btn btn-light">Agregar Producto</button>
                </div>
             </div>
          </div>
@@ -40,7 +40,7 @@
          <div class="col-md-12 col-lg-12 col-xl-12">
             <div class="row">
                <div *ngFor="let prod of productos" class="col-12 col-sm-12 col-md-6 col-lg-4 d-flex py-3">
-                  <div class="card">
+                  <div class="card shadow-sm">
                      <img src="{{prod.imagen}}" class="card-img-top" alt="">
                      <div class="card-body d-flex flex-column justify-content-between">
                         <div class="mb-3">
