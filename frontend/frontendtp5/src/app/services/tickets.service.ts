@@ -11,17 +11,22 @@ export class TicketsService {
 
   constructor(private _http: HttpClient) { }
 
+
   // *********** ESPECTADORES ******************
 
+
+  // GET ESPECTADORES
   getEspectadores(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
       params: new HttpParams()
     }
+
     return this._http.get('http://localhost:3000/api/espectador', httpOptions)
   }
 
 
+  // POST ESPECTADORES
   postEspectador(espectador: Espectador): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
@@ -33,6 +38,7 @@ export class TicketsService {
   }
 
 
+  // PUT ESPECTADOR
   putEspectador(espectador: Espectador): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
@@ -40,48 +46,60 @@ export class TicketsService {
     }
     const body = JSON.stringify(espectador);
 
-    return this._http.put('http://localhost:3000/api/espectador/'+espectador._id, body, httpOptions)
+    return this._http.put('http://localhost:3000/api/espectador/' + espectador._id, body, httpOptions)
   }
 
 
+  // DELETE ESPECTADOR
   deleteEspectador(espectador: Espectador) {
     const httpOptions = {
       headers: new HttpHeaders({}),
       params: new HttpParams()
     }
-    return this._http.delete('http://localhost:3000/api/espectador/'+espectador._id, httpOptions)
+    return this._http.delete('http://localhost:3000/api/espectador/' + espectador._id, httpOptions)
   }
 
 
-  // *********** TICKETS ******************
+  // --------------------------------------------
+  // ***************** TICKETS ******************
+  // --------------------------------------------
 
 
+  // GET TICKETS
   getTickets(): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({ }),
+      headers: new HttpHeaders({}),
       params: new HttpParams()
     }
+
     return this._http.get('http://localhost:3000/api/ticket', httpOptions)
   }
 
-  getTicketsPorCategoria(categoria: string): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ }),
-      params: new HttpParams()
-        .append('categoriaEspectador', categoria)
-    }
-    return this._http.get('http://localhost:3000/api/ticket', httpOptions)
-  }
 
+  // GET TICKET
   getTicket(id: string): Observable<any> {
     const httpOptions = {
-      headers: new HttpHeaders({ }),
+      headers: new HttpHeaders({}),
       params: new HttpParams()
     }
-    return this._http.get('http://localhost:3000/api/ticket/'+id, httpOptions)
+
+    return this._http.get('http://localhost:3000/api/ticket/' + id, httpOptions)
   }
 
 
+  // GET TICKETS POR CATEGORIA
+  getTicketsPorCategoria(categoria: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+        .append('categoriaEspectador', categoria) // params por categoria pasado por parametro
+    }
+
+    return this._http.get('http://localhost:3000/api/ticket', httpOptions)
+  }
+
+
+  // POST TICKET
   postTicket(ticket: Ticket): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
@@ -93,6 +111,7 @@ export class TicketsService {
   }
 
 
+  // PUT TICKET
   putTicket(ticket: Ticket): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-type": "application/json" }),
@@ -100,16 +119,18 @@ export class TicketsService {
     }
     const body = JSON.stringify(ticket);
 
-    return this._http.put('http://localhost:3000/api/ticket/'+ticket._id, body, httpOptions)
+    return this._http.put('http://localhost:3000/api/ticket/' + ticket._id, body, httpOptions)
   }
 
 
+  // DELETE TICKET
   deleteTicket(ticket: Ticket) {
     const httpOptions = {
       headers: new HttpHeaders({}),
       params: new HttpParams()
     }
-    return this._http.delete('http://localhost:3000/api/ticket/'+ticket._id, httpOptions)
+
+    return this._http.delete('http://localhost:3000/api/ticket/' + ticket._id, httpOptions)
   }
 
 }

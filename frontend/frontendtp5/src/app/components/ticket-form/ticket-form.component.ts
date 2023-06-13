@@ -18,17 +18,20 @@ export class TicketFormComponent implements OnInit {
 
   edicion: boolean = false;
 
-  constructor(private ticketsService: TicketsService, private router: Router, private activatedRoute: ActivatedRoute, private toast: ToastrService) {
+  constructor(private ticketsService: TicketsService, private router: Router, 
+    private activatedRoute: ActivatedRoute, private toast: ToastrService) {
+
     this.espectador = new Espectador;
     this.ticket = new Ticket;
   }
+
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params['id'] != 0) {
         this.ticketsService.getTicket(params['id']).subscribe(
           res => {
-            // console.log(res)
+            // console.log(res) // array de los tickets
             this.espectador = res.espectador;
             this.ticket = res;
             this.edicion = true;
@@ -41,12 +44,11 @@ export class TicketFormComponent implements OnInit {
     })
   }
 
-  // toaster() {
-  //   this.toast.success("Se ha registrado correctamente", "Venta de Tckets", {
-  //     closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-  //     easeTime: 100
-  //   })
-  // }
+
+  irAListaDeTickets() {
+    this.router.navigate(['ticket-list'])
+  }
+
 
   calcularPrecio(categoria: string): number {
     if (categoria == 'Local') {
@@ -58,6 +60,7 @@ export class TicketFormComponent implements OnInit {
     }
   }
 
+
   async compraTicket(espectador: Espectador) {
     try {
       const crearEspectador: any = await new Promise((resolve, reject) => {
@@ -67,10 +70,10 @@ export class TicketFormComponent implements OnInit {
         );
       });
       console.log(crearEspectador.msg);
-      // -------------------------------------
+
       this.espectador = crearEspectador.espectador;
       this.ticket.espectador = this.espectador;
-      // -------------------------------------
+ 
       const crearTicket: any = await new Promise((resolve, reject) => {
         this.ticketsService.postTicket(this.ticket).subscribe(
           result => { resolve(result) },
@@ -78,10 +81,11 @@ export class TicketFormComponent implements OnInit {
         );
       });
       console.log(crearTicket.msg);
-      // --------------------------------------
+
       this.espectador = new Espectador();
       this.ticket = new Ticket();
-      this.toast.success("Se ha registrado correctamente", "Venta de Tckets", {
+
+      this.toast.success("Se ha registrado correctamente", "Venta de Tickets", {
         closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
         easeTime: 100
       })
@@ -91,9 +95,6 @@ export class TicketFormComponent implements OnInit {
     }
   }
 
-  irAListaDeTickets() {
-    this.router.navigate(['ticket-list'])
-  }
 
   async editarTicket(ticket: Ticket, espectador: Espectador) {
     try {
@@ -105,7 +106,7 @@ export class TicketFormComponent implements OnInit {
       });
       console.log(espectadorEditado.msg)
 
-      ticket.espectador = espectadorEditado;
+      ticket.espectador = espectadorEditado.espectador;
 
       const ticketEditado: any = await new Promise((resolve, reject) => {
         this.ticketsService.putTicket(ticket).subscribe(
@@ -114,9 +115,11 @@ export class TicketFormComponent implements OnInit {
         )
       });
       console.log(ticketEditado.msg);
+
       this.espectador = new Espectador();
       this.ticket = new Ticket();
-      this.toast.info("Se ha modificado con éxito", "Modificacion", {
+
+      this.toast.info("Se ha modificado con éxito", "Modificacion de Tickets", {
         closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
         easeTime: 100
       })
@@ -125,4 +128,5 @@ export class TicketFormComponent implements OnInit {
       console.log(error)
     }
   }
+
 }
