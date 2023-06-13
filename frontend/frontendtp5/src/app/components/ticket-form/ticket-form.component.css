@@ -3,7 +3,7 @@
 }
 
 .container-fluid {
-   padding: 0;
+   padding: 20px 0px 80px 0px;
    min-height: 90vh;
 }
 
@@ -13,8 +13,12 @@
 }
 
 .ticket-form-container {
-   border: 1px solid #aaa;
+   border: 1px solid #888;
    border-radius: 8px;
-   padding: 20px;
+   padding: 25px;
    margin: 50px auto;
+}
+
+#fechaCompra {
+   max-width: 200px;
 }

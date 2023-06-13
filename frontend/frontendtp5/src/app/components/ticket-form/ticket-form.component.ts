@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Espectador } from 'src/app/models/espectador';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketsService } from 'src/app/services/tickets.service';
@@ -17,7 +18,7 @@ export class TicketFormComponent implements OnInit {
 
   edicion: boolean = false;
 
-  constructor(private ticketsService: TicketsService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private ticketsService: TicketsService, private router: Router, private activatedRoute: ActivatedRoute, private toast: ToastrService) {
     this.espectador = new Espectador;
     this.ticket = new Ticket;
   }
@@ -39,6 +40,13 @@ export class TicketFormComponent implements OnInit {
       }
     })
   }
+
+  // toaster() {
+  //   this.toast.success("Se ha registrado correctamente", "Venta de Tckets", {
+  //     closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
+  //     easeTime: 100
+  //   })
+  // }
 
   calcularPrecio(categoria: string): number {
     if (categoria == 'Local') {
@@ -73,6 +81,10 @@ export class TicketFormComponent implements OnInit {
       // --------------------------------------
       this.espectador = new Espectador();
       this.ticket = new Ticket();
+      this.toast.success("Se ha registrado correctamente", "Venta de Tckets", {
+        closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
+        easeTime: 100
+      })
     }
     catch (error) {
       console.log(error)
@@ -104,6 +116,10 @@ export class TicketFormComponent implements OnInit {
       console.log(ticketEditado.msg);
       this.espectador = new Espectador();
       this.ticket = new Ticket();
+      this.toast.info("Se ha modificado con éxito", "Modificacion", {
+        closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
+        easeTime: 100
+      })
     }
     catch (error) {
       console.log(error)

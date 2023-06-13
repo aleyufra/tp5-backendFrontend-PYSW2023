@@ -54,7 +54,7 @@
                         <button *ngIf="!edicion" (click)="compraTicket(espectador)" [disabled]="ticketForm.invalid"
                            class="btn btn-success">Comprar</button>
                         <button *ngIf="edicion" (click)="editarTicket(ticket, espectador)" [disabled]="ticketForm.invalid"
-                           class="btn btn-success">Guardar Cambios</button>
+                           class="btn btn-primary">Guardar Cambios</button>
                         <button (click)="irAListaDeTickets()"
                            class="btn btn-secondary">Ver Lista</button>
                      </div>
@@ -66,3 +66,6 @@
 
    </div>
 </div>
+
+<!-- <button (click)="toaster()"
+class="btn btn-secondary">toast</button> -->

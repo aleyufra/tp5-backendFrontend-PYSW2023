@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Espectador } from 'src/app/models/espectador';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketsService } from 'src/app/services/tickets.service';
@@ -14,7 +15,7 @@ export class TicketListComponent implements OnInit {
   tickets: Array<any>
   categoriaEspectador: string = 'Local';
 
-  constructor(private ticketService: TicketsService, private router: Router) {
+  constructor(private ticketService: TicketsService, private router: Router, private toast: ToastrService) {
     this.tickets = new Array<Ticket>
   }
 
@@ -42,7 +43,7 @@ export class TicketListComponent implements OnInit {
   async eliminarTicket(espectador: Espectador, ticket: Ticket) {
     try {
       console.log(espectador)
-      let result: any = await new Promise((resolve,reject)=>{
+      let result: any = await new Promise((resolve, reject) => {
         this.ticketService.deleteEspectador(espectador).subscribe(
           res => { resolve(res) },
           err => { reject(err) }
@@ -50,42 +51,45 @@ export class TicketListComponent implements OnInit {
       })
       console.log(result.msg)
 
-      result = await new Promise((resolve,reject)=>{
+      result = await new Promise((resolve, reject) => {
         this.ticketService.deleteTicket(ticket).subscribe(
           res => { resolve(res) },
           err => { reject(err) }
         )
       })
       console.log(result.msg);
-      // console.log('ticket y espectador han sido borrados')
-      this.ngOnInit()
-    }
+      this.toast.error("Se ha eliminado el ticket", "Atencion:", {
+        closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
+        easeTime: 100
+      })
+      this.ngOnInit();
+      }
     catch (error) {
-      console.log(error)
+        console.log(error)
+      }
     }
-  }
 
   obtenerTickets() {
-    this.ticketService.getTickets().subscribe(
-      res => {
-        // console.log(res)
-        this.tickets = res;
-      },
-      err => {
-        console.log(err)
-      }
-    )
-  }
+      this.ticketService.getTickets().subscribe(
+        res => {
+          // console.log(res)
+          this.tickets = res;
+        },
+        err => {
+          console.log(err)
+        }
+      )
+    }
 
-  filtarTickets(categoria: string) {
-    this.ticketService.getTicketsPorCategoria(categoria).subscribe(
-      res => {
-        // console.log(res)
-        this.tickets = res;
-      },
-      err => {
-        console.log(err)
-      }
-    )
+    filtarTickets(categoria: string) {
+      this.ticketService.getTicketsPorCategoria(categoria).subscribe(
+        res => {
+          // console.log(res)
+          this.tickets = res;
+        },
+        err => {
+          console.log(err)
+        }
+      )
+    }
   }
-}
