@@ -25,7 +25,7 @@ export class ListaTransaccionesComponent {
     this.mensaje = "Cargando"
     this.conversorService.getTransacciones().subscribe(
       res => {
-        console.log(res);
+        // console.log(res); // array de transacciones
         this.transacciones = res;
         this.listaVacia = false;
         this.mensaje = "Aún no se ha cargado la lista . . "
@@ -40,7 +40,7 @@ export class ListaTransaccionesComponent {
     this.mensaje = "Cargando"
     this.conversorService.getTransaccionesPorFiltro(morigen, mdestino).subscribe(
       res => {
-        console.log(res);
+        // console.log(res); // devuelve array de trans por filtro
         this.transacciones = res;
         if (this.transacciones.length == 0) {
           this.mensaje = 'No se encontraron resultados . . .'

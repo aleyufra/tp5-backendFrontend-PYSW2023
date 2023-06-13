@@ -7,12 +7,12 @@
          <div class="col-12">
             <div class="opciones-container">
                <div class="opciones d-flex justify-content-between align-items-center">
-                  <button for="cargaTransacciones" class="btn btn-secondary btn-opciones"
+                  <button for="cargaTransacciones" class="btn btn-dark btn-opciones"
                      (click)="obtenerTransacciones()">
                      Recuperar Todos
                   </button>
                   <form class="d-flex flex-row justify-content-evenly align-items-center">
-                     <button for="cargaTransacciones" class="btn btn-secondary btn-opciones me-3"
+                     <button for="cargaTransacciones" class="btn btn-dark btn-opciones me-3"
                         (click)="obtenerTransaccionesPorFiltro(monedaOrigen, monedaDestino)">
                         Recuperar Por Filtro:
                      </button>
@@ -49,7 +49,7 @@
                <div *ngIf="!listaVacia && transacciones.length != 0" class="table-responsive">
                   <table class="table tabla-transacciones table-bordered table-striped">
                      <thead>
-                        <tr>
+                        <tr class="table-dark">
                            <th scope="col">Email</th>
                            <th scope="col">Moneda Origen</th>
                            <th scope="col">Moneda Destino</th>

@@ -2,14 +2,13 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transaccion } from '../models/transaccion';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConversorService {
 
-  constructor(private _http: HttpClient, private toast: ToastrService) { }
+  constructor(private _http: HttpClient) { }
 
 
   // API CONVERSOR
@@ -65,11 +64,6 @@ export class ConversorService {
       params: new HttpParams()
     }
     const body = JSON.stringify(transaccion);
-
-    this.toast.warning("Se ha registrado la transaccion", "", {
-      closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-      easeTime: 100
-    })
 
     return this._http.post('http://localhost:3000/api/transaccion', body, httpOptions)
   }
