@@ -54,4 +54,17 @@ export class ListaTransaccionesComponent {
       }
     )
   }
+
+  obtenerEmails() {
+    this.conversorService.getTransacciones().subscribe(
+      res => {
+        // console.log(res) // devuelve mails
+        
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
+
 }

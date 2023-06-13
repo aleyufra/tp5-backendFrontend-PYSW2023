@@ -16,6 +16,9 @@
                         (click)="obtenerTransaccionesPorFiltro(monedaOrigen, monedaDestino)">
                         Recuperar Por Filtro:
                      </button>
+                     <select *ngFor="obtenerEmails()" name="porEmail" id="porEmail">
+                        <option value=""></option>
+                     </select>
                      <select id="monedaOrigen" class="form-select me-3" name="monedaOrigen" [(ngModel)]="monedaOrigen" required>
                         <option value="USD">USD Dolares - EEUU</option>
                         <option value="ARS">ARS Peso - Argentina</option>
