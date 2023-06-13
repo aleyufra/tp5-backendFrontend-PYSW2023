@@ -12,11 +12,11 @@
 
 .menu-container {
    border-radius: 8px;
-   border: 1px solid #868686;
-   background-color: #fdfdfd;
+   border: 1px solid #3b3b3b;
+   background-color: #f1f1f1;
    min-height: 80vh;
    height: fit-content;
-   padding: 30px !important;
+   padding: 35px !important;
    margin: 50px 0px;
 }
 
@@ -65,9 +65,18 @@
    border: 1px solid #222;
    background-color: #fff;
    height: fit-content;
-   padding: 30px 30px 15px 30px;
+   padding: 30px 30px 30px 30px;
    width: 100%;
    margin-bottom: 25px;
+}
+
+.opciones {
+   /* border: 1px solid red; */
+}
+
+.opciones1 {
+   display: flex;
+   /* flex-wrap: wrap; */
 }
 
 .table-responsive {
@@ -77,4 +86,37 @@
 .btn-opciones {
    white-space: nowrap;
    width: auto;
+
 }
+.btno {
+   width: 120px;
+}
+
+@media (max-width: 768px) {
+   * {
+      font-size: 12px;
+   }
+   .opciones-container {
+      height: max-content;
+   }
+   .opciones1 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: start;
+   }
+   .opciones0 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+   }
+   .btno {
+      width: auto;
+   }
+   
+}
+
+#categoriaEspectador {
+   max-width: 150px;
+}
+

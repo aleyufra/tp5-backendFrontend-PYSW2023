@@ -18,7 +18,9 @@ import { ConversorComponent } from './components/conversor/conversor.component';
 import { ListaTransaccionesComponent } from './components/lista-transacciones/lista-transacciones.component';
 import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
-
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   { path: 'productos', component: ProductosComponent },
@@ -48,7 +50,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ToastrModule.forRoot()
   ],
   exports: [RouterModule],
   providers: [],
