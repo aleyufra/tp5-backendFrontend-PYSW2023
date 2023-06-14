@@ -4,7 +4,7 @@
          <div class="col-12 col-sm-12 col-md-8 col-lg-4">
 
             <div class="conversor-container shadow-lg">
-               <form #formConversor="ngForm" class="bg-gradient">
+               <form #formConversor="ngForm">
                   <legend class="fw-bolder fs-4">Conversor de Divisas</legend>
                   <div class="mb-3">
                      <label for="email" class="form-label">Correo Electronico: </label>
@@ -43,7 +43,7 @@
                      <input type="number" name="tasa" id="tasa" min="0" max="100" class="form-control" accept=""
                         [(ngModel)]="transaccion.tasaConversion" required>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-4">
                      <label for="cantidad" class="form-label">Resultado: </label>
                      <input type="text" id="cantidad" class="form-control" accept="" disabled
                         placeholder="{{valorATipoMostrar}} {{resultado | number:'1.2-2'}}">

@@ -41,7 +41,7 @@ export class ConversorService {
 
 
   // GET TRANSACCIONES POR FILTRO 
-  getTransaccionesPorFiltro(morigen: string, mdestino: string): Observable<any> {
+  getTransaccionesPorFiltro(email: string, morigen: string, mdestino: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-type": "application/json"
@@ -49,6 +49,7 @@ export class ConversorService {
       params: new HttpParams() // Parametros pasador como filtro
         .append('monedaOrigen', morigen)
           .append('monedaDestino', mdestino)
+            .append('emailCliente', email)
     }
 
     return this._http.get('http://localhost:3000/api/transaccion', httpOptions)

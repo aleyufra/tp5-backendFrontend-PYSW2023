@@ -22,3 +22,28 @@
 #fechaCompra {
    max-width: 200px;
 }
+
+.col-12 {
+   padding: 0;
+   margin: 0;  
+}
+
+@media (max-width: 578px) {
+   .ticket-form-container {
+      border: 1px solid #ffffff;
+      border-radius: 0px;
+      padding: 35px;
+      margin: 0px auto;
+      box-shadow: none !important;
+   }
+   .container-fluid {
+      padding: 0;
+      background-color: #fff;
+      min-height: fit-content;
+   }
+   .container {
+      margin: 0;
+      padding: 0;
+      min-height: fit-content;
+   }
+}

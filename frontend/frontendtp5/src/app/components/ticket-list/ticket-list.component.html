@@ -6,23 +6,49 @@
 
          <div class="col-12">
             <div class="opciones-container shadow-lg">
-               <div class="opciones row">
-                  <div class="col-12 col-md-12 col-lg-7 opciones0">
-                     <button (click)="irATicketForm()" for="cargaTransacciones" class="btno btn btn-dark btn-opciones">
-                        Agregar
-                     </button>
+               <div class="opciones d-none d-md-block">
+                  <div class="row">
+                     <div class="col-12 col-md-5 col-lg-6">
+                        <button (click)="irATicketForm()" for="cargaTransacciones"
+                           class="btno btn btn-dark btn-opciones">
+                           Agregar
+                        </button>
+                     </div>
+                     <form class="col-12 col-md-7 col-lg-6 d-flex justify-content-end">
+                        <input (click)="obtenerTickets()" type="submit" for="cargaTickets"
+                           class="btn btn-dark btno btn-opciones me-3 mt-2 mt-sm-0" value="Mostrar Todo">
+                        <input (click)="filtarTickets(categoriaEspectador)" type="submit" for="cargaTickets"
+                           class="btn btn-dark btno btn-opciones me-3 mt-2 mt-sm-0" value="Filtrar">
+                        <select [(ngModel)]="categoriaEspectador" id="categoriaEspectador"
+                           class="form-select mt-2 mt-sm-0" name="categoriaEspectador" required
+                           aria-describedby="emailHelp">
+                           <option value="Local">Local</option>
+                           <option value="Extranjero">Extranjero</option>
+                        </select>
+                     </form>
                   </div>
-                  <form class="col-12 col-md-12 col-lg-5 mt-1 mt-lg-0 opciones1">
-                     <input (click)="obtenerTickets()" type="submit" for="cargaTickets"
-                        class="btn btn-dark btno btn-opciones me-3  mt-2 mt-sm-0" value="Mostrar Todo">
-                     <input (click)="filtarTickets(categoriaEspectador)" type="submit" for="cargaTickets"
-                        class="btn btn-dark btno btn-opciones me-3  mt-2 mt-sm-0" value="Filtrar">
-                     <select [(ngModel)]="categoriaEspectador" id="categoriaEspectador" class="form-select mt-2 mt-sm-0"
-                        name="categoriaEspectador" required aria-describedby="emailHelp">
-                        <option value="Local">Local</option>
-                        <option value="Extranjero">Extranjero</option>
-                     </select>
-                  </form>
+               </div>
+               <div class="d-block d-md-none">
+                  <div class="row">
+                     <div class="col-12 d-flex justify-content-between opc-responsive">
+                        <button (click)="irATicketForm()" for="cargaTransacciones" class="btn btn-dark">
+                           Agregar
+                        </button>
+                        <button (click)="obtenerTickets()" for="cargaTickets" class="btn btn-dark">
+                           Cargar Todo
+                        </button>
+                        <button (click)="filtarTickets(categoriaEspectador)" for="cargaTickets" class="btn btn-dark">
+                           Filtrar
+                        </button>
+                     </div>
+                     <div class="col-12 mt-3">
+                        <select [(ngModel)]="categoriaEspectador" id="categoriaEspectador"
+                           class="form-select mt-2 mt-sm-0" name="categoriaEspectador" required>
+                           <option value="Local">Local</option>
+                           <option value="Extranjero">Extranjero</option>
+                        </select>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

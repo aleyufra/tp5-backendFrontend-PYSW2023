@@ -12,12 +12,16 @@ export class ListaTransaccionesComponent {
 
   transacciones: Array<any>;
   listaVacia: boolean = true;
-  monedaOrigen: string = "USD";
-  monedaDestino: string = "ARS";
-  mensaje: string = "Aún no se ha cargado la lista . . ."
+  monedaOrigen: string = "";
+  monedaDestino: string = "";
+  mensaje: string = "Aún no se ha cargado la lista";
+  emailsList: Array<any>;
+  emailElegido: string = '';
 
   constructor(private conversorService: ConversorService, private router: Router) {
     this.transacciones = new Array<Transaccion>();
+    this.emailsList = new Array<Transaccion>();
+    this.obtenerEmails();
   }
 
 
@@ -36,9 +40,9 @@ export class ListaTransaccionesComponent {
     )
   }
 
-  obtenerTransaccionesPorFiltro(morigen: string, mdestino: string) {
+  obtenerTransaccionesPorFiltro(email: string, morigen: string, mdestino: string) {
     this.mensaje = "Cargando"
-    this.conversorService.getTransaccionesPorFiltro(morigen, mdestino).subscribe(
+    this.conversorService.getTransaccionesPorFiltro(email, morigen, mdestino).subscribe(
       res => {
         // console.log(res); // devuelve array de trans por filtro
         this.transacciones = res;
@@ -58,8 +62,13 @@ export class ListaTransaccionesComponent {
   obtenerEmails() {
     this.conversorService.getTransacciones().subscribe(
       res => {
-        // console.log(res) // devuelve mails
-        
+        console.log(res) // devuelve mails
+        res.forEach((item :any) => {
+          if (this.emailsList.includes(item.emailCliente) == false) {
+            this.emailsList.push(item.emailCliente)
+          }
+        })
+        console.log(this.emailsList)  
       },
       err => {
         console.log(err)
