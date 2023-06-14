@@ -4,12 +4,22 @@ const transaccionCtrl = {}
 transaccionCtrl.getTransacciones = async (req, res) => {
    let criteria = {}
 
-   if ((req.query.emailCliente != null) && (req.query.emailCliente != "")) {
-      criteria.emailCliente = req.query.emailCliente
-   } else if ((req.query.monedaOrigen != null) && (req.query.monedaOrigen != "" &&
-               req.query.monedaDestino != null) && (req.query.monedaDestino != "")) {
+   if ((req.query.monedaOrigen != null) && (req.query.monedaOrigen != "") &&
+      (req.query.monedaDestino != null) && (req.query.monedaDestino != "") &&
+      (req.query.emailCliente != null) && (req.query.emailCliente != "")) {
+
       criteria.monedaOrigen = req.query.monedaOrigen;
-      criteria.monedaDestino = req.query.monedaDestino
+      criteria.monedaDestino = req.query.monedaDestino;
+      criteria.emailCliente = req.query.emailCliente;
+
+   } else if (req.query.emailCliente != null && req.query.emailCliente != "") {
+      criteria.emailCliente = req.query.emailCliente
+
+   } else if ((req.query.monedaOrigen != null) && (req.query.monedaOrigen != "") &&
+      (req.query.monedaDestino != null) && (req.query.monedaDestino != "")) {
+         
+      criteria.monedaOrigen = req.query.monedaOrigen;
+      criteria.monedaDestino = req.query.monedaDestino;
    }
 
    var transacciones = await Transaccion.find(criteria);

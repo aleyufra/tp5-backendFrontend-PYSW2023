@@ -27,3 +27,23 @@ label {
    color: #fff;
    font-weight: bold;
 }
+
+@media (max-width: 576px) {
+   .container-fluid {
+      margin: 0;
+      padding: 0;
+      background-color: #9e051c;
+   }
+   .container {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+   }
+   .productos-form-container {
+      margin: 0;
+      padding: 55px 35px;
+      background-color: transparent;
+      box-shadow: none !important;
+      border: none;
+   }
+}

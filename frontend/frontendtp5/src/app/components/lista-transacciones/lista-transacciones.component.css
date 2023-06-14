@@ -66,6 +66,16 @@
    background-color: #fff;
 }
 
+.col {
+   padding: 0;
+   margin: 0;
+}
+
+.opciones {
+   width: 100%;
+   margin: 0;
+}
+
 .table-responsive {
    padding: 0;
 }
@@ -73,4 +83,90 @@
 .btn-opciones {
    white-space: nowrap;
    width: auto;
+}
+
+.opciones-filtro {
+   display: flex;
+   width: 100%;
+}
+
+.opciones-filtro button {
+   max-width: 180px;
+}
+
+.opciones button {
+   width: auto;
+   white-space: pre;
+}
+
+@media (max-width: 1200px) {
+   * {
+      font-size: 14px;
+   }
+   p {
+      font-size: 18px;
+   }
+}
+
+@media (max-width: 992px) {
+   .opciones {
+      display: flex;
+      flex-wrap: wrap;
+   }
+   #listaVacia {
+      font-size: 16px;
+   }
+   
+}
+
+@media (max-width: 768px) {
+   .opciones {
+      justify-content: center;
+   }
+   .opciones-filtro {
+      justify-content: center;
+   }
+   .opciones-filtro select {
+      max-width: 150px;
+   }
+   #tablaC thead tr th,
+   #tablaC tbody tr td {
+      font-size: 12px !important;
+   }
+
+}
+
+@media (max-width: 576px) {
+   .container-fluid, .container, .menu-container {
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      background-color: #0b4a6e;
+   }
+   .container-fluid {
+      height: fit-content;
+   }
+   .menu-container {
+      min-height: 50vh;
+      display: flex;
+      align-items: start !important;
+      border: none;
+      background-color: transparent;
+      box-shadow: none !important;
+   }
+   #btnFiltro {
+      margin-left: 5px;
+   }
+   .opciones-container {
+      padding: 35px;
+   }
+   .transacciones-header {
+      height: 50px;
+   }
+   .transacciones-header p {
+      font-size: 18px;
+   }
+   button {
+      flex-grow: 1;
+   }
 }
