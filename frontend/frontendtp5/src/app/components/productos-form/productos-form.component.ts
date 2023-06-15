@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-productos-form',
@@ -14,8 +15,10 @@ export class ProductosFormComponent implements OnInit {
   edicion!: boolean
   idProd!: string
 
-  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.producto = new Producto
+  constructor(private productoService: ProductoService, private router: Router, 
+    private activatedRoute: ActivatedRoute, private toast: ToastrService) {
+
+    this.producto = new Producto;
   }
 
   ngOnInit(): void {
@@ -41,7 +44,13 @@ export class ProductosFormComponent implements OnInit {
 
   crearProducto(producto: Producto) {
     this.productoService.postProducto(producto).subscribe(
-      res => { console.log(res) },
+      res => { 
+        console.log(res);
+        this.toast.success("Se ha agregado el producto con éxito", "", {
+          closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
+          easeTime: 100
+        })
+      },
       err => { console.log(err) }
     )
     this.router.navigate(['productos'])
@@ -52,6 +61,10 @@ export class ProductosFormComponent implements OnInit {
     this.productoService.putProducto(producto).subscribe(
       res => {
         console.log(res);
+        this.toast.info("Se ha modificado el producto", "", {
+          closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
+          easeTime: 100
+        })
         this.router.navigate(['productos'])
       },
       err => {

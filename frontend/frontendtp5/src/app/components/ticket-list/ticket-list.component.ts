@@ -24,7 +24,7 @@ export class TicketListComponent implements OnInit {
   ngOnInit(): void {
     this.ticketService.getTickets().subscribe(
       res => {
-        // console.log(res) // array de tickets filtrado o no filtrado por categoria
+        console.log(res) // array de tickets filtrado o no filtrado por categoria
         this.tickets = res;
       },
       err => {

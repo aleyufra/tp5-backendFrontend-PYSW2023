@@ -149,10 +149,10 @@
    .menu-container {
       min-height: 50vh;
       display: flex;
-      align-items: start !important;
+      align-items: start;
       border: none;
       background-color: transparent;
-      box-shadow: none !important;
+      box-shadow: none !important;  
    }
    #btnFiltro {
       margin-left: 5px;

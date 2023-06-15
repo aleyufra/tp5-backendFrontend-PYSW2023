@@ -2,14 +2,13 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
-  constructor(private _http: HttpClient, private toast: ToastrService) { }
+  constructor(private _http: HttpClient) { }
 
 
   // GET PRODUCTOS
@@ -56,11 +55,6 @@ export class ProductoService {
     }
     const body = JSON.stringify(producto)
 
-    this.toast.success("Se ha agregado el producto con éxito", "", {
-      closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-      easeTime: 100
-    })
-
     return this._http.post('http://localhost:3000/api/producto', body, httpOptions)
   }
 
@@ -76,11 +70,6 @@ export class ProductoService {
     const id = producto._id;
     const body = JSON.stringify(producto)
 
-    this.toast.info("Se ha modificado el producto", "", {
-      closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-      easeTime: 100
-    })
-
     return this._http.put('http://localhost:3000/api/producto/'+id, body, httpOptions)
   }
 
@@ -93,11 +82,6 @@ export class ProductoService {
       }),
       params: new HttpParams()
     }
-
-    this.toast.error("Se ha eliminado el producto", "", {
-      closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-      easeTime: 100
-    })
 
     return this._http.delete('http://localhost:3000/api/producto/'+id, httpOptions)
   }
