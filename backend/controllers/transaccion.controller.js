@@ -12,14 +12,15 @@ transaccionCtrl.getTransacciones = async (req, res) => {
       criteria.monedaDestino = req.query.monedaDestino;
       criteria.emailCliente = req.query.emailCliente;
 
-   } else if (req.query.emailCliente != null && req.query.emailCliente != "") {
-      criteria.emailCliente = req.query.emailCliente
-
    } else if ((req.query.monedaOrigen != null) && (req.query.monedaOrigen != "") &&
       (req.query.monedaDestino != null) && (req.query.monedaDestino != "")) {
-         
+
       criteria.monedaOrigen = req.query.monedaOrigen;
       criteria.monedaDestino = req.query.monedaDestino;
+
+   } else if (req.query.emailCliente != null && req.query.emailCliente != "") {
+      
+      criteria.emailCliente = req.query.emailCliente
    }
 
    var transacciones = await Transaccion.find(criteria);
@@ -69,8 +70,8 @@ transaccionCtrl.deleteTransaccion = async (req, res) => {
    try {
       await Transaccion.deleteOne({ _id: req.params.id });
       res.json({
-         status: '1',
-         msg: 'Transaccion removed'
+         'status': '1',
+         'msg': 'Transaccion removed'
       })
    } catch (error) {
       res.status(400).json({
