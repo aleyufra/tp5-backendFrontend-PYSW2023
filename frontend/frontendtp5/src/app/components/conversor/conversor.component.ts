@@ -16,7 +16,6 @@ export class ConversorComponent {
   valorATipo: string = 'ARS';
   valorATipoMostrar!: string;
   resultado!: string;
-
   transaccion: Transaccion;
   tasaConversion!: number;
 

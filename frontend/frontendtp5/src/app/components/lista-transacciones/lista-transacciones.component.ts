@@ -24,7 +24,6 @@ export class ListaTransaccionesComponent {
     this.obtenerEmails();
   }
 
-
   obtenerTransacciones() {
     this.mensaje = "Cargando"
     this.conversorService.getTransacciones().subscribe(

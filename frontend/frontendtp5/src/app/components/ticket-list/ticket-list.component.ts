@@ -16,10 +16,8 @@ export class TicketListComponent implements OnInit {
   categoriaEspectador: string = 'Local';
 
   constructor(private ticketService: TicketsService, private router: Router, private toast: ToastrService) {
-    
     this.tickets = new Array<Ticket>
   }
-
 
   ngOnInit(): void {
     this.ticketService.getTickets().subscribe(
@@ -27,34 +25,48 @@ export class TicketListComponent implements OnInit {
         console.log(res) // array de tickets filtrado o no filtrado por categoria
         this.tickets = res;
       },
-      err => {
-        console.log(err)
-      }
+      err => { console.log(err) }
     )
   }
-
 
   irATicketForm() {
     this.router.navigate(['ticket-form', 0])
   }
 
-
   editarTicket(id: string) {
     this.router.navigate(['ticket-form', id])
   }
 
+  obtenerTickets() {
+    this.ticketService.getTickets().subscribe(
+      res => {
+        // console.log(res) // array de tickets
+        this.tickets = res;
+      },
+      err => { console.log(err) }
+    )
+  }
+
+  filtarTickets(categoria: string) {
+    this.ticketService.getTicketsPorCategoria(categoria).subscribe(
+      res => {
+        // console.log(res) // array de tickets por categoria
+        this.tickets = res;
+      },
+      err => { console.log(err) }
+    )
+  }
 
   async eliminarTicket(espectador: Espectador, ticket: Ticket) {
+    let result: any;
     try {
-      console.log(espectador);
-
-      let result: any = await new Promise((resolve, reject) => {
+      // console.log(espectador);
+      result = await new Promise((resolve, reject) => {
         this.ticketService.deleteEspectador(espectador).subscribe(
           res => { resolve(res) },
           err => { reject(err) }
         )
       });
-
       console.log(result.msg);
 
       result = await new Promise((resolve, reject) => {
@@ -63,10 +75,9 @@ export class TicketListComponent implements OnInit {
           err => { reject(err) }
         )
       })
-
       console.log(result.msg);
 
-      this.toast.error("Se ha eliminado el ticket", "Atencion:", {
+      this.toast.error("Se ha eliminado el ticket", "Atencion!!!", {
         closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
         easeTime: 100
       })
@@ -78,29 +89,4 @@ export class TicketListComponent implements OnInit {
     }
   }
 
-
-  obtenerTickets() {
-    this.ticketService.getTickets().subscribe(
-      res => {
-        // console.log(res) // array de tickets
-        this.tickets = res;
-      },
-      err => {
-        console.log(err)
-      }
-    )
-  }
-
-
-  filtarTickets(categoria: string) {
-    this.ticketService.getTicketsPorCategoria(categoria).subscribe(
-      res => {
-        // console.log(res) // array de tickets por categoria
-        this.tickets = res;
-      },
-      err => {
-        console.log(err)
-      }
-    )
-  }
 }
