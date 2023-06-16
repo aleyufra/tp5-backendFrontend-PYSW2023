@@ -39,14 +39,14 @@ ticketCtrl.editTicket = async (req, res) => {
       await Ticket.findOneAndUpdate({ _id: req.body._id }, vticket).populate('espectador');
       res.json({
          'status': '1',
-         'msg': 'Ticket actualizado',
+         'msg': 'Ticket actualizado.',
          'ticket': vticket
       })
    } catch (error) {
       console.log(error);
       res.status(400).json({
          'status': '0',
-         'msg': 'Error al actualizar el ticket'
+         'msg': 'Error al actualizar el ticket.'
       })
    }
 }
@@ -56,12 +56,12 @@ ticketCtrl.deleteTicket = async (req, res) => {
       await Ticket.deleteOne({ _id: req.params.id });
       res.json({
          status: '1',
-         msg: 'Ticket eliminado'
+         msg: 'Ticket eliminado.'
       })
    } catch (error) {
       res.status(400).json({
          'status': '0',
-         'msg': 'Error al eliminar el ticket'
+         'msg': 'Error al eliminar el ticket.'
       })
    }
 }
