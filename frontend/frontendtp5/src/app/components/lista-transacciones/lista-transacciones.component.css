@@ -1,5 +1,5 @@
 .container-fluid {
-   padding: 30px 0px 50px 0px;
+   padding: 10px 0px 50px 0px;
    min-height: 90vh;
    height: fit-content;
 }
@@ -19,7 +19,7 @@
    min-height: fit-content;
    height: fit-content;
    padding: 40px !important;
-   margin: 30px 0px;
+   margin: 20px 0px 50px 0px;
 }
 
 .transacciones-container {
@@ -152,21 +152,27 @@
       align-items: start;
       border: none;
       background-color: transparent;
-      box-shadow: none !important;  
+      box-shadow: none !important;
+      padding: 10px !important;
    }
    #btnFiltro {
       margin-left: 5px;
    }
    .opciones-container {
-      padding: 35px;
+      padding: 20px 35px;
+      margin-bottom: 10px;
+   }
+   .transacciones-container {
+      padding: 5px;
    }
    .transacciones-header {
-      height: 50px;
+      height: 30px;
    }
    .transacciones-header p {
       font-size: 18px;
    }
    button {
       flex-grow: 1;
+      font-size: 12px;
    }
 }

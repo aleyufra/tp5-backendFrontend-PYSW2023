@@ -30,7 +30,7 @@ transaccionCtrl.createTransaccion = async (req, res) => {
       console.log(error);
       res.status(400).json({
          'status': '0',
-         'msg': 'Error procesando operacion.'
+         'msg': 'Error al registrar transacción.'
       })
    }
 }

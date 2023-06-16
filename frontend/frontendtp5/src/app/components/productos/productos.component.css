@@ -69,7 +69,8 @@
 .aside-container {
    height: 100%;
    border-radius: 12px;
-   margin-bottom: 10px
+   margin-bottom: 10px;
+   background-color: #9e051c;
 }
 
 .aside {

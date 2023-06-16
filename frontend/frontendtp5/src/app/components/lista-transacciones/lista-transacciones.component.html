@@ -6,7 +6,7 @@
             <div class="opciones-container">
                <div class="opciones row d-none d-md-block">
                   <div class="row m-0 p-0">
-                     
+
                      <div class="opciones-filtro mb-2 col col-6">
                         <button for="cargaTransacciones" class="btn btn-dark btn-opciones me-3 " id="btnFiltro"
                            (click)="obtenerTransaccionesPorFiltro(emailElegido, monedaOrigen, monedaDestino)">
@@ -43,18 +43,26 @@
                            (click)="obtenerTransacciones()">
                            Recuperar Todos
                         </button>
+                        <button for="cargaTransacciones" class="btn btn-dark btn-opciones ms-3"
+                           (click)="goToTransaccionesForm()">
+                           Volver
+                        </button>
                      </div>
                   </div>
                </div>
                <div class="d-block d-md-none row">
                   <div class="col-12  d-flex justify-content-between">
                      <button for="cargaTransacciones" class="btn btn-dark btn-opciones"
+                        (click)="goToTransaccionesForm()">
+                        Volver
+                     </button>
+                     <button for="cargaTransacciones" class="btn btn-dark btn-opciones ms-1"
                         (click)="obtenerTransacciones()">
-                        Recuperar Todos
+                        Todos
                      </button>
                      <button for="cargaTransacciones" class="btn btn-dark btn-opciones" id="btnFiltro"
                         (click)="obtenerTransaccionesPorFiltro(emailElegido, monedaOrigen, monedaDestino)">
-                        Por Filtro:
+                        Filtrar:
                      </button>
                   </div>
                   <div class="col-12 mt-3">

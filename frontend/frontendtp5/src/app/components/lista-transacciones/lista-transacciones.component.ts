@@ -24,6 +24,10 @@ export class ListaTransaccionesComponent {
     this.obtenerEmails();
   }
 
+  goToTransaccionesForm() {
+    this.router.navigate(['conversor'])
+  }
+
   obtenerTransacciones() {
     this.mensaje = "Cargando"
     this.conversorService.getTransacciones().subscribe(
