@@ -16,14 +16,13 @@ export class ListaTransaccionesComponent {
   monedaDestino: string = "";
   mensaje: string = "Aún no se ha cargado la lista";
   emailsList: Array<any>;
-  emailElegido: string = '';
+  emailElegido: string = "";
 
   constructor(private conversorService: ConversorService, private router: Router) {
     this.transacciones = new Array<Transaccion>();
-    this.emailsList = new Array<Transaccion>();
+    this.emailsList = new Array<any>();
     this.obtenerEmails();
   }
-
 
   obtenerTransacciones() {
     this.mensaje = "Cargando"
@@ -32,7 +31,11 @@ export class ListaTransaccionesComponent {
         // console.log(res); // array de transacciones
         this.transacciones = res;
         this.listaVacia = false;
-        this.mensaje = "Aún no se ha cargado la lista . . "
+        if (this.transacciones.length == 0) {
+          this.mensaje = "Aún no existen registros";
+        } else {
+          this.mensaje = "Aún no se ha cargado la lista";
+        }
       },
       err => {
         console.log(err)
@@ -44,10 +47,10 @@ export class ListaTransaccionesComponent {
     this.mensaje = "Cargando"
     this.conversorService.getTransaccionesPorFiltro(email, morigen, mdestino).subscribe(
       res => {
-        // console.log(res); // devuelve array de trans por filtro
+        // console.log(res); // array de transacciones por filtro
         this.transacciones = res;
         if (this.transacciones.length == 0) {
-          this.mensaje = 'No se encontraron resultados . . .'
+          this.mensaje = "No se encontraron resultados";
           this.listaVacia = true;
         } else {
           this.listaVacia = false;
@@ -63,12 +66,12 @@ export class ListaTransaccionesComponent {
     this.conversorService.getTransacciones().subscribe(
       res => {
         console.log(res) // devuelve mails
-        res.forEach((item :any) => {
+        res.forEach((item: any) => {
           if (this.emailsList.includes(item.emailCliente) == false) {
             this.emailsList.push(item.emailCliente)
           }
         })
-        console.log(this.emailsList)  
+        console.log(this.emailsList)
       },
       err => {
         console.log(err)

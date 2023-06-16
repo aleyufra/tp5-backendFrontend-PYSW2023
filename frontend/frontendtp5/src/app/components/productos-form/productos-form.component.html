@@ -10,7 +10,7 @@
                <div *ngIf="edicion">
                   <p class="h4 text-white fw-bold mb-3">Modificar Producto</p>
                </div>
-               <form #ticketForm="ngForm" action="http://localhost:3000/api/producto" method="post">
+               <form #ticketForm="ngForm" action="">
                   <div class="mb-3">
                      <label for="form-nombre" class="form-label">Nombre del producto: </label>
                      <input type="text" [(ngModel)]="producto.nombre" class="form-control" id="form-nombre" name="nombre" required>

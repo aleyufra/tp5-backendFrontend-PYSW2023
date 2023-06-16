@@ -11,54 +11,56 @@ import { ConversorService } from 'src/app/services/conversor.service';
 })
 export class ConversorComponent {
 
-  valor!:number;
-  valorDeTipo:string = 'USD';
-  valorATipo:string = 'ARS';
-  valorATipoMostrar!:string;
-  resultado!:string
-
+  valor!: number;
+  valorDeTipo: string = 'USD';
+  valorATipo: string = 'ARS';
+  valorATipoMostrar!: string;
+  resultado!: string;
   transaccion: Transaccion;
-  tasaConversion!:number
+  tasaConversion!: number;
 
   constructor(private conversorService: ConversorService, private router: Router, private toast: ToastrService) {
-    
+
     this.transaccion = new Transaccion;
   }
 
-  convertir(valorN: number, deTipo: string, aTipo: string) {
-
+  // CONVERTIR Y REGISTRAR
+  async convertir(valorN: number, deTipo: string, aTipo: string) {
     let valor: string = valorN.toString();
-
-    this.conversorService.conversor(valor,deTipo,aTipo).subscribe(
-      res => {
-        console.log(res);
-        this.valorATipoMostrar = res.to_type;
-        this.resultado = res.result;
-
-        this.transaccion.monedaOrigen = this.valorDeTipo;
-        this.transaccion.cantidadOrigen = this.valor;
-        this.transaccion.monedaDestino = this.valorATipo;
-        this.transaccion.cantidadDestino = parseInt(res.result);
-
-        // console.log(JSON.stringify(this.transaccion))
+    try {
+      let convertidoRes: any = await new Promise((resolve, reject) => {
+        this.conversorService.conversor(valor, deTipo, aTipo).subscribe(
+          res => {
+            resolve(res);
+            this.valorATipoMostrar = res.to_type;
+            this.resultado = res.result;
+            this.transaccion.monedaOrigen = this.valorDeTipo;
+            this.transaccion.cantidadOrigen = this.valor;
+            this.transaccion.monedaDestino = this.valorATipo;
+            this.transaccion.cantidadDestino = res.result;
+          },
+          err => { reject(err) }
+        )
+      })
+      console.log(convertidoRes);
+      
+      let transaccionRes: any = await new Promise((resolve, reject) => {
         this.conversorService.postTransacciones(this.transaccion).subscribe(
           res => {
-            console.log(res);
-            this.toast.warning("Se ha registrado la transaccion", "", {
-              closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-              easeTime: 100
+            resolve(res);
+            this.toast.warning("Se ha registrado la transacción.", "", {
+              closeButton: true, timeOut: 3000, progressBar: true, 
+              progressAnimation: 'decreasing', easeTime: 100
             })
           },
-          err => {
-            console.log(err)
-          }
+          err => { reject(err) }
         )
-      },
-
-      err => {
-        console.log(err)
-      }
-    )
+      })
+      console.log(transaccionRes.msg);
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 
   goToList() {

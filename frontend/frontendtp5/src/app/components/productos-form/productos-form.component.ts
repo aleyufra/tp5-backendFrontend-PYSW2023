@@ -24,7 +24,7 @@ export class ProductosFormComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params['id'] == 0) {
-        console.log('nuevo producto')
+        // console.log('nuevo producto')
         this.edicion = false;
       } else {
         this.productoService.getProducto(params['id']).subscribe(
@@ -32,11 +32,9 @@ export class ProductosFormComponent implements OnInit {
             // console.log(res);
             this.producto = res;
             this.edicion = true;
-            this.idProd = res._id
+            // this.idProd = res._id
           },
-          err => {
-            console.log(err)
-          }
+          err => { console.log(err) }
         )
       }
     })
@@ -46,7 +44,7 @@ export class ProductosFormComponent implements OnInit {
     this.productoService.postProducto(producto).subscribe(
       res => { 
         console.log(res);
-        this.toast.success("Se ha agregado el producto con éxito", "", {
+        this.toast.success("Se ha agregado el producto con éxito!", "", {
           closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
           easeTime: 100
         })
@@ -59,17 +57,15 @@ export class ProductosFormComponent implements OnInit {
 
   editarProducto(producto: Producto) {
     this.productoService.putProducto(producto).subscribe(
-      res => {
+      res => { 
         console.log(res);
-        this.toast.info("Se ha modificado el producto", "", {
-          closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
-          easeTime: 100
+        this.toast.info("Se ha modificado el producto.", "", {
+          closeButton: true, timeOut: 3000, progressBar: true, 
+          progressAnimation: 'decreasing', easeTime: 100
         })
         this.router.navigate(['productos'])
       },
-      err => {
-        console.log(err)
-      }
+      err => { console.log(err) }
     )
   }
 }

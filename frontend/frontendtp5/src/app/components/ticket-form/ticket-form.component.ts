@@ -15,7 +15,6 @@ export class TicketFormComponent implements OnInit {
   precioOriginal: number = 600;
   espectador: Espectador;
   ticket: Ticket;
-
   edicion: boolean = false;
 
   constructor(private ticketsService: TicketsService, private router: Router, 
@@ -24,7 +23,6 @@ export class TicketFormComponent implements OnInit {
     this.espectador = new Espectador;
     this.ticket = new Ticket;
   }
-
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -36,19 +34,15 @@ export class TicketFormComponent implements OnInit {
             this.ticket = res;
             this.edicion = true;
           },
-          err => {
-            console.log(err)
-          }
+          err => { console.log(err) }
         )
       }
     })
   }
 
-
   irAListaDeTickets() {
     this.router.navigate(['ticket-list'])
   }
-
 
   calcularPrecio(categoria: string): number {
     if (categoria == 'Local') {
@@ -59,7 +53,6 @@ export class TicketFormComponent implements OnInit {
       return this.ticket.precioTicket = NaN
     }
   }
-
 
   async compraTicket(espectador: Espectador) {
     try {
@@ -95,7 +88,6 @@ export class TicketFormComponent implements OnInit {
     }
   }
 
-
   async editarTicket(ticket: Ticket, espectador: Espectador) {
     try {
       const espectadorEditado: any = await new Promise((resolve, reject) => {
@@ -128,5 +120,4 @@ export class TicketFormComponent implements OnInit {
       console.log(error)
     }
   }
-
 }
