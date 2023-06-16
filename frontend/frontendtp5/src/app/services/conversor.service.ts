@@ -16,7 +16,7 @@ export class ConversorService {
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/x-www-form-urlencoded',
-        'X-RapidAPI-Key': 'cb3248b3e4mshcc7893fea728b6fp1044cejsnda64170dc028',
+        'X-RapidAPI-Key': '00eb449269msh6422ec084d1e376p1f3d32jsn32f6c01e9805',
         'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com'
       })
     }
