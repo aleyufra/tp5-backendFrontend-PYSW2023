@@ -12,12 +12,13 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ProductosComponent implements OnInit {
 
   productos: Array<any>;
+  prodDest: Array<any>;
   primerProd!: Producto;
-  prodDest!: Array<Producto>;
 
   constructor(private productoService: ProductoService, private router: Router, private toast: ToastrService) {
 
     this.productos = new Array<Producto>();
+    this.prodDest = new Array<Producto>();
   }
 
   ngOnInit(): void {
@@ -38,9 +39,7 @@ export class ProductosComponent implements OnInit {
         this.primerProd = res[0];
         this.prodDest.shift();
       },
-      err => {
-        console.log(err)
-      }
+      err => { console.log(err) }
     )
   }
 
@@ -55,7 +54,7 @@ export class ProductosComponent implements OnInit {
   eliminarProducto(id: string) {
     this.productoService.deleteProducto(id).subscribe(
       res => { 
-        // console.log(res);
+        console.log(res);
         this.toast.error("Se ha eliminado el producto", "", {
           closeButton: true, timeOut: 3000, progressBar: true, progressAnimation: 'decreasing',
           easeTime: 100

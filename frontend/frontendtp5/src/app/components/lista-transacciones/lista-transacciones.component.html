@@ -87,7 +87,6 @@
             </div>
          </div>
 
-
          <div class="col-12">
             <div class="row transacciones-container">
                <div class="transacciones-header">
@@ -113,8 +112,8 @@
                            <td>{{tran.emailCliente}}</td>
                            <th class="fw-normal">{{tran.monedaOrigen}}</th>
                            <td>{{tran.monedaDestino}}</td>
-                           <td>${{tran.cantidadOrigen}}</td>
-                           <td>${{tran.cantidadDestino}}</td>
+                           <td>${{tran.cantidadOrigen | number:'1.2-2'}}</td>
+                           <td>${{tran.cantidadDestino | number:'1.2-2'}}</td>
                            <td>{{tran.tasaConversion}}</td>
                         </tr>
                      </tbody>
